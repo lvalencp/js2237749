@@ -4,7 +4,7 @@ function crearContador(num){
     let almacenar=0;
     function incrementar(){
         almacenar=num+1
-        // num = num+1;
+        //num = num+1;
         return almacenar;
     }
     function decrementar(){
@@ -151,7 +151,7 @@ function objlit(objeto){
         let cont=0;
         for (const prop in obj) {
             cont ++;
-            console.log(` ${cont} clave ${prop} = ${cont} valor ${obj[prop]}`);
+            console.log(` ${cont} clave: ${prop} = ${cont} valor: ${obj[prop]}`);
           }
     }
     return elementos;
@@ -168,41 +168,125 @@ oo();
 
 
 //Redactar dos problemas qye se puedan resolver con closures
+
 //1.Dar la hipotenusa de un triangulo, se pretende indicar el valor de los catetos del triangulo, en el cual la función realizará la
 //operación para encontrar la hipotenusa del triangulo.
 
-
-
-
+function pitagoras(c1, c2, h1){
+    function hallar(){
+        if (c1==0){
+            console.log(`        Formula a implementar: c2 = c2: ${c2} - h2: ${h1}`)
+            multic=c2*c2;
+            multih=h1*h1;
+            rest=multic-multih;
+            c1=Math.sqrt(rest);
+        } else if(c2==0){
+            console.log(`        Formula a implementar: c2 = c2:(${c1}) - h2:(${h1})`)
+            multic=c1*c1;
+            multih=h1*h1;
+            rest=multic-multih;
+            c2=Math.sqrt(rest);
+        } else {
+            console.log(`        Formula a implementar: h2 = c2:(${c1}) - c2:(${c2})`)
+            multi1=c1*c1;
+            multi2=c2*c2;
+            sumcat=multi1+multi2;
+            h1=Math.sqrt(sumcat);
+        }
+        console.log(`        El valor del primer cateto es ${c1}
+        El valor del segundo cateto es ${c2}
+        El valor de la Hipotenusa es ${h1}`)
+     }
+    return hallar;
+}
+const h=pitagoras(25, 5, 0);
+h();
 
 //2. El usuario debe ingresar el valor del billete y el valor del producto a comprar, si el producto vale más de $2.000 se realizará el descuento del 10%
 //si el producto vale más de $5.000 el descuento será del 20% y si el producto vale más de $10.000 el descuento será del 30%
-function dinero(billete){
-    let bill=billete;
-    function cambio(producto,descuento=0, cambio=0, prod1=0){
-        let pro=producto;
-        let des=descuento;
-        if(pro>=2000){
+function dinero(bill){
+    function cambio(pro, des){
+        if(pro>=2000 && pro<5000){
             des=pro*0.10;
             prod1=pro-des;
             cambio=bill-prod1;
-            console.log(`El producto con valor de ${pro} tiene un descuento de ${des}
-            por lo cual el valor final del producto es de ${prod1} y las vueltas son: ${cambio}`)
-        } else if(pro>=5000){
+        } else if(pro>=5000 && pro<10000){
             des=pro*0.20;
             prod1=pro-des;
             cambio=bill-prod1;
-            console.log(`El producto con valor de ${pro} tiene un descuento de ${des}
-            por lo cual el valor final del producto es de ${prod1} y las vueltas son: ${cambio}`)
         } else if(pro>=10000){
             des=pro*0.30;
             prod1=pro-des;
             cambio=bill-prod1;
-            console.log(`El producto con valor de ${pro} tiene un descuento de ${des}
-            por lo cual el valor final del producto es de ${prod1} y las vueltas son: ${cambio}`)
         }
+        console.log(`            Valor del Producto: $ ${pro}
+            El Descuento es de: $ ${des}
+            Valor del Producto con el Descuento: $ ${prod1}
+            Valor del Billete: $ ${bill}
+            Vueltas: $ ${cambio}`)
     }
     return cambio;
 }
-const g=dinero(10000);
-g(2000);
+const g=dinero(20000);
+g(15000);
+
+
+//Ejercicios David 1. Cree un algoritmo , que solicite los tres lados de un triángulo Escribir un algoritmo, que solicite los tres lados de un triángulo, como salida deberá mostrar si es isóceles, escaleno o equilátero y el porque es ese tipo de triangulo
+function triangulos(){
+    function reconocer(l1, l2, l3){
+        if (l1!=l2 && l2!=l3){
+            console.log (`        El triangulo es Escaleno
+        Todos sus lados son diferentes`)
+        } else if(l1==l2 && l2==l3){
+            console.log (`        El triangulo es Equilatero
+        Todos sus lados son iguales`)
+        } else {
+            console.log (`        El triangulo es Isóceles
+        Tiene dos lados iguales y uno no`)
+        }
+        console.log (`        Lado 1: ${l1}
+        Lado 2: ${l2}
+        Lado 3: ${l3}`);
+    }
+    return reconocer;
+}
+const tt=triangulos();
+tt(5, 2, 1);
+
+//Ejercicio 2.
+function jugadores(juan, carlos){
+    let x=0;
+    let y=0;
+    let letrasj="zwrt"//abcd
+    let letrasc="efgh"
+    function placas(){
+        for (let j =0; j < letrasj.length; j++){
+            for (let lej = 0; lej < juan.length; lej++){
+                if (letrasj[j]==juan[lej]){
+                    x=x+1;
+                }
+            }
+        }
+        console.log(`Juan tiene ${x} puntos`);
+
+        for (let c =0; c < letrasc.length; c++){
+            for (let lec = 0; lec < carlos.length; lec++){
+                if (letrasc[c]==carlos[lec]){
+                    y=y+1;
+                }
+            }
+        }
+        console.log(`Carlos tiene ${y} puntos`);
+
+        if(x>y){
+            console.log(`Juan lleva la delantera`)
+        } else if (y>x){
+            console.log(`Carlos lleva la delantera`)
+        } else {
+            console.log(`Están empatados`)
+        }
+    }
+    return placas;
+}
+const i=jugadores("abcz","efgh");
+i();
