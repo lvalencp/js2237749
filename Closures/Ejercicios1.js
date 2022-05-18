@@ -241,7 +241,7 @@ function triangulos(){
             console.log (`        El triangulo es Equilatero
         Todos sus lados son iguales`)
         } else {
-            console.log (`        El triangulo es Isóceles
+            console.log (`        El triangulo es Isósceles
         Tiene dos lados iguales y uno no`)
         }
         console.log (`        Lado 1: ${l1}
