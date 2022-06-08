@@ -1,0 +1,1 @@
+console.log('Un desarrollador web , es un profesional se encarga de crear sitios web, a través de líneas de código complejo; utilizando una gran variedad lenguajes de programación, como CSS y Javascript. El rol del desarrollador web está destinado a codificar, diseñar, y mantener sitios y aplicaciones web');
